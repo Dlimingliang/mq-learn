@@ -1,0 +1,6 @@
+spring:
+  profiles:
+    active: hello_world
+
+logging:
+  level: debug
