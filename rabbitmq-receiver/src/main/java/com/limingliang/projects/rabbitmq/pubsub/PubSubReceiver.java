@@ -19,6 +19,7 @@ public class PubSubReceiver {
     @RabbitListener(queues = "#{autoDeleteQueue2.name}")
     public void receive2(String in) throws InterruptedException {
         receive(in, 2);
+        int a = 1/0;
     }
 
     public void receive(String in, int receiver) throws InterruptedException {
