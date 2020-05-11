@@ -1,4 +1,4 @@
-package com.limingliang.projects.rabbitmqsender.helloworld;
+package com.limingliang.projects.rabbitmq.helloworld;
 
 import org.springframework.amqp.core.Queue;
 import org.springframework.context.annotation.Bean;

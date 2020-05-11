@@ -1,6 +1,6 @@
 spring:
   profiles:
-    active: hello_world
+    active: pub_sub
   rabbitmq:
     host: localhost
 

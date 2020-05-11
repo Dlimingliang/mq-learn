@@ -1,7 +1,7 @@
-package com.limingliang.projects.rabbitmqsender.helloworld;
+package com.limingliang.projects.rabbitmq.pubsub;
 
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.amqp.core.Queue;
+import org.springframework.amqp.core.FanoutExchange;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -16,10 +16,10 @@ import java.util.concurrent.atomic.AtomicInteger;
  */
 
 @Slf4j
-public class HelloWorldSender {
+public class PubSubSender {
 
     @Autowired
-    private Queue queue;
+    private FanoutExchange fanoutExchange;
 
     @Autowired
     private RabbitTemplate rabbitTemplate;
@@ -43,7 +43,7 @@ public class HelloWorldSender {
         builder.append(count.incrementAndGet());
         String message = builder.toString();
 
-        this.rabbitTemplate.convertAndSend(queue.getName(), message);
+        this.rabbitTemplate.convertAndSend(fanoutExchange.getName(), "", message);
         log.info("发送消息,内容为 " + message);
     }
 }

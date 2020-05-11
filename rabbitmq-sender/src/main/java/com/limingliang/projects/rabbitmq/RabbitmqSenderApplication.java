@@ -1,7 +1,8 @@
-package com.limingliang.projects.rabbitmqreceiver;
+package com.limingliang.projects.rabbitmq;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.scheduling.annotation.EnableScheduling;
 
 /**
  * @Auther: limingliang
@@ -11,10 +12,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  */
 
 @SpringBootApplication
-public class RabbitmqReceiverApplication {
+@EnableScheduling
+public class RabbitmqSenderApplication {
 
     public static void main(String[] args) {
 
-        SpringApplication.run(RabbitmqReceiverApplication.class, args);
+        SpringApplication.run(RabbitmqSenderApplication.class, args);
     }
 }
