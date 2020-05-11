@@ -1,6 +1,9 @@
 spring:
   profiles:
     active: hello_world
+  rabbitmq:
+    host: localhost
 
 logging:
-  level: debug
+  level:
+    com.limingliang.projects.rabbitmqreceiver: debug

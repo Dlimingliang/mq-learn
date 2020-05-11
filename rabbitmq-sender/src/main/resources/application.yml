@@ -1,7 +1,13 @@
+server:
+  port: 9090
+
 spring:
   profiles:
     active: hello_world
+  rabbitmq:
+    host: localhost
 
 logging:
   level:
     com.limingliang.projects.rabbitmqsender: debug
+
