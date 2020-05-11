@@ -28,6 +28,7 @@ public class HelloWorldReceiver1 {
         doWork(in);
         watch.stop();
         log.info(this.getClass().getName() + "接收消息,内容为 " + in + "时间消耗为" + watch.getTotalTimeSeconds());
+        int a = 1/0;
     }
 
     private void doWork(String in) throws InterruptedException {
