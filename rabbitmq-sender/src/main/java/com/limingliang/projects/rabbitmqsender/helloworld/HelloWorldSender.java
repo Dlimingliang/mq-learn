@@ -27,6 +27,6 @@ public class HelloWorldSender {
 
         String message = "Hello World!";
         this.rabbitTemplate.convertAndSend(queue.getName(), message);
-        log.info("发送消息,内容为" + message);
+        log.info("发送消息,内容为 " + message);
     }
 }

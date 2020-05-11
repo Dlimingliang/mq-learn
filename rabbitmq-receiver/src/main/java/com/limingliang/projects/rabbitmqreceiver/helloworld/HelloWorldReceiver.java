@@ -22,6 +22,6 @@ public class HelloWorldReceiver {
     @RabbitHandler
     public void receive(String in) {
 
-        log.info("接收消息,内容为" + in);
+        log.info("接收消息,内容为 " + in);
     }
 }
