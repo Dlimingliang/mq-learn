@@ -1,6 +1,6 @@
 spring:
   profiles:
-    active: pub_sub
+    active: routing
   rabbitmq:
     host: localhost
 
