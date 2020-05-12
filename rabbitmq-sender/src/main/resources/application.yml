@@ -3,7 +3,7 @@ server:
 
 spring:
   profiles:
-    active: routing
+    active: topics
   rabbitmq:
     host: localhost
 
