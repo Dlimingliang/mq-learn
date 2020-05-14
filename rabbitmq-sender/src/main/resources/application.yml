@@ -3,11 +3,21 @@ server:
 
 spring:
   profiles:
-    active: topics
+    active: pay_order
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/mq_learn?useUnicode=true&characterEncoding=UTF-8
+    username: root
+    password:
   rabbitmq:
     host: localhost
 
 logging:
   level:
-    com.limingliang.projects.rabbitmqsender: debug
+    com.limingliang.projects.rabbitmq: debug
 
+mybatis:
+  type-aliases-package: com.limingliang.projects.rabbitmq.domain
+  mapper-locations: classpath:mapping/*.xml
+  configuration:
+    map-underscore-to-camel-case: true

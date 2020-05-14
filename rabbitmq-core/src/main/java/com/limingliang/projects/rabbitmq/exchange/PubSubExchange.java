@@ -12,7 +12,6 @@ import org.springframework.context.annotation.Profile;
  * Copyright (c) 2017, zaodao All Rights Reserved.
  */
 
-@Profile("pub_sub")
 @Configuration
 public class PubSubExchange {
 
