@@ -1,7 +1,8 @@
-package com.limingliang.projects.rabbitmq.payOrder;
+package com.limingliang.projects.rabbitmq.payOrder.controller;
 
 import com.alibaba.fastjson.JSON;
 import com.limingliang.projects.rabbitmq.domain.PayOrder;
+import com.limingliang.projects.rabbitmq.payOrder.service.PayOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;

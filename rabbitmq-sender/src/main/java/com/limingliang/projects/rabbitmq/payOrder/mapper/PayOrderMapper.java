@@ -1,4 +1,4 @@
-package com.limingliang.projects.rabbitmq.payOrder;
+package com.limingliang.projects.rabbitmq.payOrder.mapper;
 
 import com.limingliang.projects.rabbitmq.domain.PayOrder;
 import org.apache.ibatis.annotations.Mapper;

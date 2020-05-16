@@ -19,4 +19,11 @@ public class TopicsExchange {
     public TopicExchange topicExchange() {
         return new TopicExchange("topics_topic");
     }
+
+    // durable 是否持久化
+    // 声明一个持久化不自动删除的队交换器
+    @Bean
+    public TopicExchange payOrderExchange() {
+        return new TopicExchange("pay_order_topic", true, false);
+    }
 }

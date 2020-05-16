@@ -1,7 +1,8 @@
-package com.limingliang.projects.rabbitmq.payOrder;
+package com.limingliang.projects.rabbitmq.payOrder.service;
 
 
 import com.limingliang.projects.rabbitmq.domain.PayOrder;
+import com.limingliang.projects.rabbitmq.payOrder.mapper.PayOrderMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

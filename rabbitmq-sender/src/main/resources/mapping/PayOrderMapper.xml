@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.limingliang.projects.rabbitmq.payOrder.PayOrderMapper">
+<mapper namespace="com.limingliang.projects.rabbitmq.payOrder.mapper.PayOrderMapper">
 
     <sql id="base_sql">
         order_code, goods_id, goods_name, orgin_price, sale_price, user_id, user_name, create_time
