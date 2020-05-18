@@ -1,5 +1,6 @@
 package com.limingliang.projects.rabbitmq;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -11,6 +12,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  */
 
 @SpringBootApplication
+@MapperScan("com.limingliang.projects.rabbitmq.payorder.mapper")
 public class RabbitmqReceiverApplication {
 
     public static void main(String[] args) {

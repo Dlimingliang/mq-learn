@@ -1,5 +1,12 @@
 package com.limingliang.projects.rabbitmq.payorder;
 
+import com.limingliang.projects.rabbitmq.constants.QueueConstants;
+import com.limingliang.projects.rabbitmq.constants.RoutingKeyConstants;
+import org.springframework.amqp.core.Binding;
+import org.springframework.amqp.core.BindingBuilder;
+import org.springframework.amqp.core.Queue;
+import org.springframework.amqp.core.TopicExchange;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
@@ -13,4 +20,21 @@ import org.springframework.context.annotation.Profile;
 @Profile("pay_order")
 @Configuration
 public class PayOrderConfig {
+
+    @Bean
+    public Queue payOrderQueue() {
+
+        return new Queue(QueueConstants.orderCreateQueue, true);
+    }
+
+    @Bean
+    public Binding binding(TopicExchange topicExchange, Queue payOrderQueue) {
+
+        return BindingBuilder.bind(payOrderQueue).to(topicExchange).with(RoutingKeyConstants.orderCreateRouting);
+    }
+
+    @Bean
+    public PayOrderReceiver payOrderReceiver() {
+        return new PayOrderReceiver();
+    }
 }
