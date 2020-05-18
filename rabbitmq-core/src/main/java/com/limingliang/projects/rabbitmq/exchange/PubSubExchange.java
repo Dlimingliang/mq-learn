@@ -3,7 +3,6 @@ package com.limingliang.projects.rabbitmq.exchange;
 import org.springframework.amqp.core.FanoutExchange;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Profile;
 
 /**
  * @Auther: limingliang
