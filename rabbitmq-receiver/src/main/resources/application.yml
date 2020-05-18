@@ -1,6 +1,6 @@
 spring:
   profiles:
-    active: topics
+    active: pay_order
   rabbitmq:
     host: localhost
 

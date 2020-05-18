@@ -25,10 +25,12 @@ public class MsgLogService {
         return msgLogMapper.getByMsgId(msgId);
     }
 
+    @Transactional
     public boolean create(MsgLog msgLog) {
         return msgLogMapper.create(msgLog) > 0;
     }
 
+    @Transactional
     public boolean update(MsgLog msgLog) {
         return msgLogMapper.update(msgLog) > 0;
     }

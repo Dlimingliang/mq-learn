@@ -28,9 +28,6 @@
         <if test="exchange != null ">
             exchange = #{exchange},
         </if>
-        <if test="exchange != null ">
-            exchange = #{exchange},
-        </if>
         <if test="routingKey != null ">
             routing_key = #{routingKey},
         </if>
