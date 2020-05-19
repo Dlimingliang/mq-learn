@@ -33,15 +33,9 @@ public class RabbitmqConfig {
     private MsgLogService msgLogService;
 
     @Bean
-    public Jackson2JsonMessageConverter converter() {
-        return new Jackson2JsonMessageConverter();
-    }
-
-    @Bean
     public RabbitTemplate rabbitTemplate() {
 
         RabbitTemplate rabbitTemplate = new RabbitTemplate(connectionFactory);
-        rabbitTemplate.setMessageConverter(converter());
 
         // 消息是否发送到exchange
         rabbitTemplate.setConfirmCallback( ((correlationData, ack, cause) -> {

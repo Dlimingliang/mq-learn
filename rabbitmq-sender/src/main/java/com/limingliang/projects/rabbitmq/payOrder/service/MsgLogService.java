@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 /**
  * @Auther: limingliang
  * @Description:
@@ -20,6 +22,10 @@ public class MsgLogService {
 
     @Autowired
     private MsgLogMapper msgLogMapper;
+
+    public List<MsgLog> selectTimeoutMsg() {
+        return msgLogMapper.selectTimeoutMsg();
+    }
 
     public MsgLog getByMsgId(String msgId) {
         return msgLogMapper.getByMsgId(msgId);

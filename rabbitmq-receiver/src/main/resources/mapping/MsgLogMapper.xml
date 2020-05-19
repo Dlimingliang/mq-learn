@@ -11,7 +11,7 @@
         try_count,
         next_try_time,
         create_time,
-        update_time,
+        update_time
     </sql>
 
     <sql id="insert_sql">
@@ -48,7 +48,14 @@
         </if>
     </sql>
 
-    <select id="get" resultType="com.limingliang.projects.rabbitmq.domain.MsgLog">
+    <select id="selectTimeoutMsg" resultType="com.limingliang.projects.rabbitmq.domain.MsgLog">
+        select <include refid="base_sql"/>
+        from msg_log
+        where status = 1
+        and next_try_time &lt;= now()
+    </select>
+
+    <select id="getByMsgId" resultType="com.limingliang.projects.rabbitmq.domain.MsgLog">
         select <include refid="base_sql"></include>
         from msg_log
         <where>

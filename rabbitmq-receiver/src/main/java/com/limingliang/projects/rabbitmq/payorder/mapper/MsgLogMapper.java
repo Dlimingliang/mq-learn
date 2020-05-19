@@ -3,6 +3,8 @@ package com.limingliang.projects.rabbitmq.payorder.mapper;
 import com.limingliang.projects.rabbitmq.domain.MsgLog;
 import org.apache.ibatis.annotations.Mapper;
 
+import java.util.List;
+
 /**
  * @Auther: limingliang
  * @Description:
@@ -12,6 +14,8 @@ import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
 public interface MsgLogMapper {
+
+    List<MsgLog> selectTimeoutMsg();
 
     MsgLog getByMsgId(String msgId);
 

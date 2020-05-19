@@ -28,9 +28,9 @@ public class PayOrderConfig {
     }
 
     @Bean
-    public Binding binding(TopicExchange topicExchange, Queue payOrderQueue) {
+    public Binding binding(TopicExchange payOrderExchange, Queue payOrderQueue) {
 
-        return BindingBuilder.bind(payOrderQueue).to(topicExchange).with(RoutingKeyConstants.orderCreateRouting);
+        return BindingBuilder.bind(payOrderQueue).to(payOrderExchange).with(RoutingKeyConstants.orderCreateRouting);
     }
 
     @Bean

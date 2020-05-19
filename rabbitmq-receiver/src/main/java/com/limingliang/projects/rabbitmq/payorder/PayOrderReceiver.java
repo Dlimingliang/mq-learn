@@ -6,6 +6,7 @@ import com.limingliang.projects.rabbitmq.payorder.service.MsgLogService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
 
@@ -22,6 +23,7 @@ public class PayOrderReceiver {
     private MsgLogService msgLogService;
 
     @RabbitListener(queues = "#{payOrderQueue.name}")
+    @Transactional
     public void receive1(String message) throws InterruptedException {
 
         log.info(message);
@@ -44,6 +46,8 @@ public class PayOrderReceiver {
             updateMsgLog.setUpdateTime(new Date());
             msgLogService.update(updateMsgLog);
         }
+        //验证消息重新投递
+        //int a = 1/0;
     }
 
 }

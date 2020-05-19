@@ -1,11 +1,14 @@
 package com.limingliang.projects.rabbitmq.domain;
 
+import com.limingliang.projects.rabbitmq.dictionary.MsgLogStatusEnum;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.Date;
 
 /**
@@ -41,4 +44,20 @@ public class MsgLog implements Serializable {
     private Date createTime;
 
     private Date updateTime;
+
+    public MsgLog(String msgId, String msg, String exchange, String routingKey) {
+        this.msgId = msgId;
+        this.msg = msg;
+        this.exchange = exchange;
+        this.routingKey = routingKey;
+
+        this.status = MsgLogStatusEnum.DeliverIng.getCode();
+        this.tryCount = 0;
+
+        LocalDateTime localDateTime = LocalDateTime.now();
+        Date date = Date.from(localDateTime.atZone( ZoneId.systemDefault()).toInstant());
+        this.createTime = date;
+        this.updateTime = date;
+        this.nextTryTime = Date.from(localDateTime.plusMinutes(1L).atZone( ZoneId.systemDefault()).toInstant());
+    }
 }
