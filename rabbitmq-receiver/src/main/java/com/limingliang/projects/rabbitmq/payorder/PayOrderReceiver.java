@@ -1,8 +1,13 @@
 package com.limingliang.projects.rabbitmq.payorder;
 
+import com.limingliang.projects.rabbitmq.dictionary.MsgLogStatusEnum;
+import com.limingliang.projects.rabbitmq.domain.MsgLog;
+import com.limingliang.projects.rabbitmq.payorder.service.MsgLogService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
-import org.springframework.util.StopWatch;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import java.util.Date;
 
 /**
  * @Auther: limingliang
@@ -13,10 +18,32 @@ import org.springframework.util.StopWatch;
 @Slf4j
 public class PayOrderReceiver {
 
+    @Autowired
+    private MsgLogService msgLogService;
+
     @RabbitListener(queues = "#{payOrderQueue.name}")
     public void receive1(String message) throws InterruptedException {
 
         log.info(message);
+
+        String msgId = message.split("messageId:")[1];
+
+        MsgLog msgLog = msgLogService.getByMsgId(msgId);
+        if (msgLog != null && MsgLogStatusEnum.ConsumerSuccess.getCode() == msgLog.getStatus()) {
+            log.info("重复消费, msgId: {}", msgId);
+            return;
+        }
+
+        boolean businessSuccess = true;
+
+        if (businessSuccess) {
+
+            MsgLog updateMsgLog = new MsgLog();
+            updateMsgLog.setMsgId(msgId);
+            updateMsgLog.setStatus(MsgLogStatusEnum.ConsumerSuccess.getCode());
+            updateMsgLog.setUpdateTime(new Date());
+            msgLogService.update(updateMsgLog);
+        }
     }
 
 }

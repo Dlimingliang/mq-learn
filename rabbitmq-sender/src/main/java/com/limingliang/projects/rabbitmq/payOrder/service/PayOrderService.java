@@ -49,7 +49,7 @@ public class PayOrderService {
         boolean result = payOrderMapper.create(payOrder) > 0;
 
         String msgId = UUID.randomUUID().toString();
-        String message = "订单创建, 订单号: " + payOrder.getOrderCode() + " messageId" + msgId;
+        String message = "订单创建, 订单号: " + payOrder.getOrderCode() + " messageId:" + msgId;
         MsgLog msgLog = MsgLog.builder()
                 .msgId(msgId)
                 .msg(message)

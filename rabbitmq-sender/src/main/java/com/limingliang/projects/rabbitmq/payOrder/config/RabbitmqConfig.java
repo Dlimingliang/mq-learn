@@ -13,6 +13,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
+import java.util.Date;
+
 /**
  * @Auther: limingliang
  * @Description:
@@ -55,6 +57,7 @@ public class RabbitmqConfig {
                 msgLog.setMsgId(correlationData.getId());
                 msgLog.setMsgId(correlationData.getId());
                 msgLog.setStatus(MsgLogStatusEnum.DeliverSuccess.getCode());
+                msgLog.setUpdateTime(new Date());
                 msgLogService.update(msgLog);
             } else {
                 log.info("消息发送到Exchange失败, {}, cause: {}", correlationData, cause);
