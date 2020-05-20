@@ -52,7 +52,7 @@ public class ResendMsg {
                 MsgLog updateMsgLog = new MsgLog();
                 updateMsgLog.setMsgId(msgId);
                 updateMsgLog.setUpdateTime(new Date());
-                updateMsgLog.setStatus(MsgLogStatusEnum.DeliverFail.getCode());
+                updateMsgLog.setStatus(MsgLogStatusEnum.NotDeliver.getCode());
                 msgLogService.update(updateMsgLog);
                 log.info("超过最大重试次数, 消息投递失败, msgId: {}", msgId);
             } else {

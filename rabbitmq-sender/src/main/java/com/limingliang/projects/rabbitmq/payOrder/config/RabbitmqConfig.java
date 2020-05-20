@@ -48,12 +48,17 @@ public class RabbitmqConfig {
                 log.info("消息成功发送到Exchange");
                 MsgLog msgLog = new MsgLog();
                 msgLog.setMsgId(correlationData.getId());
-                msgLog.setMsgId(correlationData.getId());
                 msgLog.setStatus(MsgLogStatusEnum.DeliverSuccess.getCode());
                 msgLog.setUpdateTime(new Date());
                 msgLogService.update(msgLog);
             } else {
+
                 log.info("消息发送到Exchange失败, {}, cause: {}", correlationData, cause);
+                MsgLog msgLog = new MsgLog();
+                msgLog.setMsgId(correlationData.getId());
+                msgLog.setStatus(MsgLogStatusEnum.DeliverFail.getCode());
+                msgLog.setUpdateTime(new Date());
+                msgLogService.update(msgLog);
             }
 
         }));

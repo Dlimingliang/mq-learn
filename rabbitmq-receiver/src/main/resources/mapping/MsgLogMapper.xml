@@ -51,7 +51,7 @@
     <select id="selectTimeoutMsg" resultType="com.limingliang.projects.rabbitmq.domain.MsgLog">
         select <include refid="base_sql"/>
         from msg_log
-        where status = 1
+        where status = 3
         and next_try_time &lt;= now()
     </select>
 

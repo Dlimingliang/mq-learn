@@ -11,7 +11,8 @@ import java.io.Serializable;
 public enum MsgLogStatusEnum implements Serializable {
 
     DeliverIng(1, "投递中"), DeliverSuccess(2, "投递成功"),
-    DeliverFail(3, "投递失败"), ConsumerSuccess(4, "消费成功");
+    DeliverFail(3, "投递失败"), NotDeliver(4, "不在投递"),
+    ConsumerSuccess(5, "消费成功");
 
     private int code;
 
