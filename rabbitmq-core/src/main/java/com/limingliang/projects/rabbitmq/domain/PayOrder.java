@@ -35,6 +35,8 @@ public class PayOrder implements Serializable {
 
     private BigDecimal salePrice;
 
+    private Integer status;
+
     private Long userId;
 
     private String userName;

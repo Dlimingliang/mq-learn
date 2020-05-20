@@ -9,4 +9,6 @@ package com.limingliang.projects.rabbitmq.constants;
 public class QueueConstants {
 
     public static final String orderCreateQueue = "order_create_queue";
+
+    public static final String orderCreateDiscountCardQueue = "order_create_discount_card_queue";
 }

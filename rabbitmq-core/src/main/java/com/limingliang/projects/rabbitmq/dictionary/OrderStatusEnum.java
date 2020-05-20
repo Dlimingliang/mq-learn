@@ -5,13 +5,12 @@ import java.io.Serializable;
 /**
  * @Auther: limingliang
  * @Description:
- * @Date: 2020/5/16 17:16
+ * @Date: 2020/5/20 14:36
  * Copyright (c) 2017, zaodao All Rights Reserved.
  */
-public enum MsgLogStatusEnum implements Serializable {
+public enum OrderStatusEnum implements Serializable {
 
-    DeliverIng(1, "投递中"), DeliverSuccess(2, "投递成功"),
-    DeliverFail(3, "投递失败"), NotDeliver(4, "不在投递");
+    NO_PAY(1, "待支付"), PayAlready(2, "已支付");
 
     private int code;
 
@@ -33,7 +32,7 @@ public enum MsgLogStatusEnum implements Serializable {
         this.label = label;
     }
 
-    MsgLogStatusEnum(int code, String label) {
+    OrderStatusEnum(int code, String label) {
         this.code = code;
         this.label = label;
     }

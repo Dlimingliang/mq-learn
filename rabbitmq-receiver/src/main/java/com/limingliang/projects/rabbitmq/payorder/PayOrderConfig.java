@@ -28,13 +28,30 @@ public class PayOrderConfig {
     }
 
     @Bean
+    public Queue orderCreateDiscountCardQueue() {
+
+        return new Queue(QueueConstants.orderCreateDiscountCardQueue, true);
+    }
+
+    @Bean
     public Binding binding(TopicExchange payOrderExchange, Queue payOrderQueue) {
 
         return BindingBuilder.bind(payOrderQueue).to(payOrderExchange).with(RoutingKeyConstants.orderCreateRouting);
     }
 
     @Bean
+    public Binding discountCardBinding(TopicExchange payOrderExchange, Queue orderCreateDiscountCardQueue) {
+
+        return BindingBuilder.bind(orderCreateDiscountCardQueue).to(payOrderExchange).with(RoutingKeyConstants.orderCreateRouting);
+    }
+
+    @Bean
     public PayOrderReceiver payOrderReceiver() {
         return new PayOrderReceiver();
+    }
+
+    @Bean
+    public DsicountCardReceiver dsicountCardReceiver() {
+        return new DsicountCardReceiver();
     }
 }

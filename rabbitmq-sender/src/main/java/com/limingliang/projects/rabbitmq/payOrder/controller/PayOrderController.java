@@ -1,6 +1,7 @@
 package com.limingliang.projects.rabbitmq.payOrder.controller;
 
 import com.alibaba.fastjson.JSON;
+import com.limingliang.projects.rabbitmq.dictionary.OrderStatusEnum;
 import com.limingliang.projects.rabbitmq.domain.PayOrder;
 import com.limingliang.projects.rabbitmq.payOrder.service.PayOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,6 +37,7 @@ public class PayOrderController {
                 .goodsName("macPro")
                 .orginPrice(new BigDecimal(new Random().nextInt(100)))
                 .salePrice(new BigDecimal(new Random().nextInt(10)))
+                .status(OrderStatusEnum.NO_PAY.getCode())
                 .userId(4486L)
                 .userName("lalala")
                 .createTime(now)

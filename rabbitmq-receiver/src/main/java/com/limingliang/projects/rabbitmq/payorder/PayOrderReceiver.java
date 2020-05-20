@@ -1,14 +1,12 @@
 package com.limingliang.projects.rabbitmq.payorder;
 
-import com.limingliang.projects.rabbitmq.dictionary.MsgLogStatusEnum;
-import com.limingliang.projects.rabbitmq.domain.MsgLog;
-import com.limingliang.projects.rabbitmq.payorder.service.MsgLogService;
+import com.limingliang.projects.rabbitmq.dictionary.OrderStatusEnum;
+import com.limingliang.projects.rabbitmq.domain.PayOrder;
+import com.limingliang.projects.rabbitmq.payorder.service.PayOrderService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.Date;
 
 /**
  * @Auther: limingliang
@@ -20,32 +18,20 @@ import java.util.Date;
 public class PayOrderReceiver {
 
     @Autowired
-    private MsgLogService msgLogService;
+    private PayOrderService payOrderService;
 
     @RabbitListener(queues = "#{payOrderQueue.name}")
     @Transactional
-    public void receive1(String message) throws InterruptedException {
+    public void receive(String message) throws InterruptedException {
 
-        log.info(message);
+        log.info("订单消费者消费消息:" + message);
 
-        String msgId = message.split("messageId:")[1];
+        String orderCode = message.split(":")[1];
 
-        MsgLog msgLog = msgLogService.getByMsgId(msgId);
-        if (msgLog != null && MsgLogStatusEnum.ConsumerSuccess.getCode() == msgLog.getStatus()) {
-            log.info("重复消费, msgId: {}", msgId);
-            return;
-        }
-
-        boolean businessSuccess = true;
-
-        if (businessSuccess) {
-
-            MsgLog updateMsgLog = new MsgLog();
-            updateMsgLog.setMsgId(msgId);
-            updateMsgLog.setStatus(MsgLogStatusEnum.ConsumerSuccess.getCode());
-            updateMsgLog.setUpdateTime(new Date());
-            msgLogService.update(updateMsgLog);
-        }
+        PayOrder payOrder = new PayOrder();
+        payOrder.setOrderCode(orderCode);
+        payOrder.setStatus(OrderStatusEnum.PayAlready.getCode());
+        payOrderService.update(payOrder);
         //验证消息重新投递
         //int a = 1/0;
     }
