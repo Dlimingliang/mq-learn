@@ -8,6 +8,14 @@ spring:
     password:
   rabbitmq:
     host: localhost
+    port: 5672
+    username: guest
+    password: guest
+    # 设置手动确认(ack) Queue -> C
+#    listener:
+#      simple:
+#        acknowledge-mode: manual
+#        prefetch: 100
 
 logging:
   level:

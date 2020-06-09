@@ -11,6 +11,13 @@ spring:
     password:
   rabbitmq:
     host: localhost
+    port: 5672
+    username: guest
+    password: guest
+    # 开启发布确认 P -> Exchange
+    publisher-confirm-type: simple
+    # 开启returnMessage回调 Exchange -> Queue
+    publisher-returns: true
 
 logging:
   level:
