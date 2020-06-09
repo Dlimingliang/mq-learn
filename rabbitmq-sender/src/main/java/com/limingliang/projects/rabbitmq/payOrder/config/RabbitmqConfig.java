@@ -6,6 +6,8 @@ import com.limingliang.projects.rabbitmq.domain.MsgLog;
 import com.limingliang.projects.rabbitmq.payOrder.service.MsgLogService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.rabbit.connection.CachingConnectionFactory;
+import org.springframework.amqp.rabbit.connection.ConnectionNameStrategy;
+import org.springframework.amqp.rabbit.connection.SimplePropertyValueConnectionNameStrategy;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -30,6 +32,11 @@ public class RabbitmqConfig {
 
     @Autowired
     private MsgLogService msgLogService;
+
+    @Bean
+    public ConnectionNameStrategy connectionNameStrategy() {
+        return new SimplePropertyValueConnectionNameStrategy("spring.application.name");
+    }
 
     @Bean
     public RabbitTemplate rabbitTemplate() {

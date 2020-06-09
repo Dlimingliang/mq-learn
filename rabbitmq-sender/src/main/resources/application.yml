@@ -2,6 +2,8 @@ server:
   port: 9090
 
 spring:
+  application:
+    name: rabbitmq-sender
   profiles:
     active: pay_order
   datasource:
@@ -14,10 +16,16 @@ spring:
     port: 5672
     username: guest
     password: guest
+    cache:
+      connection:
+        mode: channel
+      channel:
+        size: 50
     # 开启发布确认 P -> Exchange
     publisher-confirm-type: simple
     # 开启returnMessage回调 Exchange -> Queue
     publisher-returns: true
+
 
 logging:
   level:
