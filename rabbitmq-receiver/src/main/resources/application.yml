@@ -11,11 +11,18 @@ spring:
     port: 5672
     username: guest
     password: guest
-    # 设置手动确认(ack) Queue -> C
-#    listener:
-#      simple:
-#        acknowledge-mode: manual
-#        prefetch: 100
+    # 自动确认，抛异常将回丢到队列中
+    listener:
+      simple:
+        acknowledge-mode: auto
+        prefetch: 100
+        default-requeue-rejected: false # 超过最大重试次数时，是否丢弃 false丢弃时需要写相应代码将该消息加入死信队列
+        retry:
+          enabled: true # 是否开启消费者重试,(为false时，关闭消费者重试, 这时消费端代码异常会一直收到消息)
+          max-attempts: 3 # 最大重试次数
+          initial-interval: 3000 # 重试时间间隔
+          multiplier: 2 # 重试时间乘子 3s 6s 12s 24s
+          max-interval: 10000
 
 logging:
   level:
