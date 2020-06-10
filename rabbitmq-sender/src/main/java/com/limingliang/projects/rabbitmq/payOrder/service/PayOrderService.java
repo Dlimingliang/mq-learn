@@ -52,7 +52,7 @@ public class PayOrderService {
         msgLogService.create(msgLog);
 
         CorrelationData correlationData = new CorrelationData(msgId);
-        rabbitTemplate.convertAndSend(payOrderExchange.getName() + "1", RoutingKeyConstants.orderCreateRouting,
+        rabbitTemplate.convertAndSend(payOrderExchange.getName(), RoutingKeyConstants.orderCreateRouting,
                 message, correlationData);
 
         return result ;
