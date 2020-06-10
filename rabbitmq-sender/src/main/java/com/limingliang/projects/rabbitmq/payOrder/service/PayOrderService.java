@@ -48,11 +48,11 @@ public class PayOrderService {
 
         String msgId = UUID.randomUUID().toString();
         String message = "订单创建, 订单号:" + payOrder.getOrderCode();
-        MsgLog msgLog = new MsgLog(msgId, message, payOrderExchange.getName(), RoutingKeyConstants.orderCreateRouting);
+        MsgLog msgLog = new MsgLog(msgId, message, payOrderExchange.getName(), RoutingKeyConstants.ORDER_CREATE_ROUTING_KEY);
         msgLogService.create(msgLog);
 
         CorrelationData correlationData = new CorrelationData(msgId);
-        rabbitTemplate.convertAndSend(payOrderExchange.getName(), RoutingKeyConstants.orderCreateRouting,
+        rabbitTemplate.convertAndSend(payOrderExchange.getName(), RoutingKeyConstants.ORDER_CREATE_ROUTING_KEY,
                 message, correlationData);
 
         return result ;

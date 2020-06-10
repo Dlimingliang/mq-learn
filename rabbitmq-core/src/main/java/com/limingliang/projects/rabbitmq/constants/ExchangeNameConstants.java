@@ -8,5 +8,5 @@ package com.limingliang.projects.rabbitmq.constants;
  */
 public class ExchangeNameConstants {
 
-    public static final String payOrderTopicExchangeName = "pay_order_topic";
+    public static final String ORDER_TOPIC_EXCHANGE = "order_topic_exchange";
 }

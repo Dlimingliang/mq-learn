@@ -24,25 +24,25 @@ public class PayOrderConfig {
     @Bean
     public Queue payOrderQueue() {
 
-        return new Queue(QueueConstants.orderCreateQueue, true);
+        return new Queue(QueueConstants.ORDER_CREATE_QUEUE, true);
     }
 
     @Bean
     public Queue orderCreateDiscountCardQueue() {
 
-        return new Queue(QueueConstants.orderCreateDiscountCardQueue, true);
+        return new Queue(QueueConstants.ORDER_CREATE_DISCOUNTCARD_QUEUE, true);
     }
 
     @Bean
     public Binding binding(TopicExchange payOrderExchange, Queue payOrderQueue) {
 
-        return BindingBuilder.bind(payOrderQueue).to(payOrderExchange).with(RoutingKeyConstants.orderCreateRouting);
+        return BindingBuilder.bind(payOrderQueue).to(payOrderExchange).with(RoutingKeyConstants.ORDER_CREATE_ROUTING_KEY);
     }
 
     @Bean
     public Binding discountCardBinding(TopicExchange payOrderExchange, Queue orderCreateDiscountCardQueue) {
 
-        return BindingBuilder.bind(orderCreateDiscountCardQueue).to(payOrderExchange).with(RoutingKeyConstants.orderCreateRouting);
+        return BindingBuilder.bind(orderCreateDiscountCardQueue).to(payOrderExchange).with(RoutingKeyConstants.ORDER_CREATE_ROUTING_KEY);
     }
 
     @Bean

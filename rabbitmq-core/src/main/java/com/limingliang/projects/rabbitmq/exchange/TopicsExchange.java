@@ -24,6 +24,6 @@ public class TopicsExchange {
     // 声明一个持久化不自动删除的队交换器
     @Bean
     public TopicExchange payOrderExchange() {
-        return new TopicExchange(ExchangeNameConstants.payOrderTopicExchangeName, true, false);
+        return new TopicExchange(ExchangeNameConstants.ORDER_TOPIC_EXCHANGE, true, false);
     }
 }

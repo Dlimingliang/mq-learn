@@ -8,5 +8,5 @@ package com.limingliang.projects.rabbitmq.constants;
  */
 public class RoutingKeyConstants {
 
-    public static final String orderCreateRouting = "order_create";
+    public static final String ORDER_CREATE_ROUTING_KEY = "order_create_routing_key";
 }
