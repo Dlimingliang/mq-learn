@@ -2,7 +2,6 @@ package com.limingliang.projects.rabbitmq.payOrder.service;
 
 
 import com.limingliang.projects.rabbitmq.constants.RoutingKeyConstants;
-import com.limingliang.projects.rabbitmq.dictionary.MsgLogStatusEnum;
 import com.limingliang.projects.rabbitmq.domain.MsgLog;
 import com.limingliang.projects.rabbitmq.domain.PayOrder;
 import com.limingliang.projects.rabbitmq.payOrder.mapper.PayOrderMapper;
@@ -13,7 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Date;
 import java.util.UUID;
 
 /**
@@ -53,8 +51,9 @@ public class PayOrderService {
         MsgLog msgLog = new MsgLog(msgId, message, payOrderExchange.getName(), RoutingKeyConstants.orderCreateRouting);
         msgLogService.create(msgLog);
 
-        rabbitTemplate.convertAndSend(payOrderExchange.getName(), RoutingKeyConstants.orderCreateRouting,
-                message, new CorrelationData(msgId));
+        CorrelationData correlationData = new CorrelationData(msgId);
+        rabbitTemplate.convertAndSend(payOrderExchange.getName() + "1", RoutingKeyConstants.orderCreateRouting,
+                message, correlationData);
 
         return result ;
     }

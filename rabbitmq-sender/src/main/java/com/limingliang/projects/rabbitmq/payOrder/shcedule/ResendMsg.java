@@ -4,6 +4,7 @@ import com.limingliang.projects.rabbitmq.dictionary.MsgLogStatusEnum;
 import com.limingliang.projects.rabbitmq.domain.MsgLog;
 import com.limingliang.projects.rabbitmq.payOrder.service.MsgLogService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.amqp.rabbit.connection.CorrelationData;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -66,6 +67,8 @@ public class ResendMsg {
                         .atZone( ZoneId.systemDefault()).toInstant()));
                 msgLogService.update(updateMsgLog);
                 log.info("第 " + updateMsgLog.getTryCount() + " 次重新投递消息");
+                rabbitTemplate.convertAndSend(msgLog.getExchange(), msgLog.getRoutingKey(),
+                        msgLog.getMsg(), new CorrelationData(msgId));
             }
         });
 
