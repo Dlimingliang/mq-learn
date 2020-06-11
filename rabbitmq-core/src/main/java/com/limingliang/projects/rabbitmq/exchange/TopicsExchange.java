@@ -28,12 +28,12 @@ public class TopicsExchange {
         return new TopicExchange(ExchangeConstants.ORDER_TOPIC_EXCHANGE, true, false);
     }
 
-    @Bean
-    public TopicExchange payOrderDelayExchange() {
-
-        return ExchangeBuilder.topicExchange(ExchangeConstants.ORDER_TOPIC_DELAY_EXHCANGE)
-                .durable(true)
-                .delayed()
-                .build();
-    }
+//    @Bean
+//    public TopicExchange payOrderDelayExchange() {
+//
+//        return ExchangeBuilder.topicExchange(ExchangeConstants.ORDER_TOPIC_DELAY_EXHCANGE)
+//                .durable(true)
+//                .delayed()
+//                .build();
+//    }
 }

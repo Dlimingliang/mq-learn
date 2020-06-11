@@ -3,7 +3,7 @@ package com.limingliang.projects.rabbitmq.controller;
 import com.alibaba.fastjson.JSON;
 import com.limingliang.projects.rabbitmq.dictionary.OrderStatusEnum;
 import com.limingliang.projects.rabbitmq.domain.PayOrder;
-import com.limingliang.projects.rabbitmq.service.PayOrderService;
+import com.limingliang.projects.rabbitmq.service.SendMessageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -25,7 +25,7 @@ import java.util.Random;
 public class PayOrderController {
 
     @Autowired
-    private PayOrderService payOrderService;
+    private SendMessageService sendMessageService;
 
     @RequestMapping(value = "create", method = RequestMethod.POST)
     public String orderCreate() {
@@ -42,7 +42,7 @@ public class PayOrderController {
                 .userName("lalala")
                 .createTime(now)
                 .build();
-        payOrderService.create(payOrder);
+        sendMessageService.sendMessage(payOrder);
 
         return JSON.toJSONString(payOrder);
     }

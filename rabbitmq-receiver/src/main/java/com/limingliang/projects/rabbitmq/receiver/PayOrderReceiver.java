@@ -36,11 +36,11 @@ public class PayOrderReceiver {
         //int a = 1/0;
     }
 
-    @RabbitListener(queues = "#{payOrderDelayQueue.name}")
-    @Transactional
-    public void delayReceive(String message) throws InterruptedException {
-
-        log.info("订单消费者延迟消费消息:" + message);
-    }
+//    @RabbitListener(queues = "#{payOrderDelayQueue.name}")
+//    @Transactional
+//    public void delayReceive(String message) throws InterruptedException {
+//
+//        log.info("订单消费者延迟消费消息:" + message);
+//    }
 
 }
