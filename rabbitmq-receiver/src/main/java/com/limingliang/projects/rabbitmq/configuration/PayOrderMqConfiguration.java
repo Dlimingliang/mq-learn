@@ -47,6 +47,12 @@ public class PayOrderMqConfiguration {
     }
 
     @Bean
+    public Queue payOrderDelayQueue() {
+
+        return new Queue(QueueConstants.ORDER_CREATE_DELAY_QUEUE, true, false, false);
+    }
+
+    @Bean
     public Binding binding(TopicExchange payOrderExchange, Queue payOrderQueue) {
 
         return BindingBuilder.bind(payOrderQueue).to(payOrderExchange).with(RoutingKeyConstants.ORDER_CREATE_ROUTING_KEY);
@@ -56,6 +62,12 @@ public class PayOrderMqConfiguration {
     public Binding discountCardBinding(TopicExchange payOrderExchange, Queue orderCreateDiscountCardQueue) {
 
         return BindingBuilder.bind(orderCreateDiscountCardQueue).to(payOrderExchange).with(RoutingKeyConstants.ORDER_CREATE_ROUTING_KEY);
+    }
+
+    @Bean
+    public Binding payOrderDelayBinding(TopicExchange payOrderDelayExchange, Queue payOrderDelayQueue) {
+
+        return BindingBuilder.bind(payOrderDelayQueue).to(payOrderDelayExchange).with(RoutingKeyConstants.ORDER_CREATE_ROUTING_KEY);
     }
 
     @Bean

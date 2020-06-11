@@ -10,5 +10,7 @@ public class ExchangeConstants {
 
     public static final String ORDER_TOPIC_EXCHANGE = "order_topic_exchange";
 
+    public static final String ORDER_TOPIC_DELAY_EXHCANGE = "order_topic_delay_exchange";
+
     public static final String COMMON_DEAD_LETTER_DIRECT_EXCHANGE = "common_dead_letter_direct_exchange";
 }

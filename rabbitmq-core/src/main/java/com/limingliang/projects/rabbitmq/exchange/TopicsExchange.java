@@ -1,6 +1,7 @@
 package com.limingliang.projects.rabbitmq.exchange;
 
 import com.limingliang.projects.rabbitmq.constants.ExchangeConstants;
+import org.springframework.amqp.core.ExchangeBuilder;
 import org.springframework.amqp.core.TopicExchange;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -25,5 +26,14 @@ public class TopicsExchange {
     @Bean
     public TopicExchange payOrderExchange() {
         return new TopicExchange(ExchangeConstants.ORDER_TOPIC_EXCHANGE, true, false);
+    }
+
+    @Bean
+    public TopicExchange payOrderDelayExchange() {
+
+        return ExchangeBuilder.topicExchange(ExchangeConstants.ORDER_TOPIC_DELAY_EXHCANGE)
+                .durable(true)
+                .delayed()
+                .build();
     }
 }
