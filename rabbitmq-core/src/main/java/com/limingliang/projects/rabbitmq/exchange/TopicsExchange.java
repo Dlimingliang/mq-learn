@@ -1,6 +1,6 @@
 package com.limingliang.projects.rabbitmq.exchange;
 
-import com.limingliang.projects.rabbitmq.constants.ExchangeNameConstants;
+import com.limingliang.projects.rabbitmq.constants.ExchangeConstants;
 import org.springframework.amqp.core.TopicExchange;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -24,6 +24,6 @@ public class TopicsExchange {
     // 声明一个持久化不自动删除的队交换器
     @Bean
     public TopicExchange payOrderExchange() {
-        return new TopicExchange(ExchangeNameConstants.ORDER_TOPIC_EXCHANGE, true, false);
+        return new TopicExchange(ExchangeConstants.ORDER_TOPIC_EXCHANGE, true, false);
     }
 }

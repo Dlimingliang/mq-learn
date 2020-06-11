@@ -11,4 +11,6 @@ public class QueueConstants {
     public static final String ORDER_CREATE_QUEUE = "order_create_queue";
 
     public static final String ORDER_CREATE_DISCOUNTCARD_QUEUE = "order_create_discount_card_queue";
+
+    public static final String COMMON_DEAD_LETTER_QUEUE = "common_dead_letter_queue";
 }

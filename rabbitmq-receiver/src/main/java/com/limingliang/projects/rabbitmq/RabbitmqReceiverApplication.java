@@ -12,7 +12,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  */
 
 @SpringBootApplication
-@MapperScan("com.limingliang.projects.rabbitmq.payorder.mapper")
+@MapperScan("com.limingliang.projects.rabbitmq.mapper")
 public class RabbitmqReceiverApplication {
 
     public static void main(String[] args) {
