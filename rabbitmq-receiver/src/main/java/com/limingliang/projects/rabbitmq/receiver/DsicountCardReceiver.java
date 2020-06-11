@@ -20,12 +20,12 @@ public class DsicountCardReceiver {
 
         //为了显示业务复杂
         try {
-            Thread.sleep(1);
+            Thread.sleep(10000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
 
         //验证消息重新投递
-        int a = 1/0;
+//        int a = 1/0;
     }
 }

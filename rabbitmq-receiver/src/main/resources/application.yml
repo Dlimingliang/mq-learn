@@ -15,7 +15,7 @@ spring:
     listener:
       simple:
         acknowledge-mode: auto
-        prefetch: 100
+        prefetch: 2
         default-requeue-rejected: false # 超过最大重试次数时，是否丢弃 false丢弃时需要写相应代码将该消息加入死信队列
         retry:
           enabled: true # 是否开启消费者重试,(为false时，关闭消费者重试, 这时消费端代码异常会一直收到消息)
