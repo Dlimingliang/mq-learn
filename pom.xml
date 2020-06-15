@@ -9,6 +9,7 @@
         <module>rabbitmq-sender</module>
         <module>rabbitmq-receiver</module>
         <module>rabbitmq-core</module>
+        <module>rocketmq-sender</module>
     </modules>
 
     <parent>
