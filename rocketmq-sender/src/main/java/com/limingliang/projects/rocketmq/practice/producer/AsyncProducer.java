@@ -1,4 +1,4 @@
-package com.limingliang.projects.rocketmq.practice;
+package com.limingliang.projects.rocketmq.practice.producer;
 
 import com.limingliang.projects.rocketmq.constants.MessageConstants;
 import lombok.extern.slf4j.Slf4j;
