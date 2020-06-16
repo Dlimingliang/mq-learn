@@ -24,12 +24,14 @@ public class SyncProducer {
         producer.setNamesrvAddr(MessageConstants.NAMESRV_ADDR + ":9876");
         producer.start();
 
-        Message message = new Message("TopicTest", "TagA",
-                ("Hello RocketMQ ").getBytes(RemotingHelper.DEFAULT_CHARSET));
+        for (int i = 0; i < 5; i++) {
 
-        SendResult sendResult = producer.send(message);
-        log.info(JSON.toJSONString(sendResult));
-
+            Message message = new Message("TopicTest", "TagA",
+                    ("Hello RocketMQ " + i).getBytes(RemotingHelper.DEFAULT_CHARSET));
+            SendResult sendResult = producer.send(message);
+            log.info(JSON.toJSONString(sendResult));
+        }
+        
         producer.shutdown();
 
 
