@@ -41,13 +41,13 @@ public class AsyncProducer {
 
                 @Override
                 public void onSuccess(SendResult sendResult) {
-                    log.info("%-10d OK %s %n", index,
-                            sendResult.getMsgId());
+                    log.info(String.format("%-10d OK %s", index,
+                            sendResult.getMsgId()));
                 }
 
                 @Override
                 public void onException(Throwable e) {
-                    log.info("%-10d Exception %s %n", index, e);
+                    log.info(String.format("%-10d Exception %s", index, e));
                     e.printStackTrace();
                 }
             });

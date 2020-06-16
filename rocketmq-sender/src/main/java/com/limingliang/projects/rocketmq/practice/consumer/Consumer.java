@@ -29,6 +29,6 @@ public class Consumer {
         });
 
         consumer.start();
-        log.info("Consumer Started.%");
+        log.info("Consumer Started.");
     }
 }
