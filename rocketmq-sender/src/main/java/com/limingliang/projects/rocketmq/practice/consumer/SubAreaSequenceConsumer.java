@@ -28,7 +28,7 @@ public class SubAreaSequenceConsumer {
         DefaultMQPushConsumer consumer = new DefaultMQPushConsumer("SubAreaSequenceConsumerGroup");
         consumer.setNamesrvAddr(MessageConstants.NAMESRV_ADDR + ":9876");
         //设置第一次启动消费位置,只对第一次生效
-        consumer.setConsumeFromWhere(ConsumeFromWhere.CONSUME_FROM_FIRST_OFFSET);
+        consumer.setConsumeFromWhere(ConsumeFromWhere.CONSUME_FROM_LAST_OFFSET);
         consumer.subscribe("SubAreaSequenceTopic", "TagA || TagC || TagD");
 
         consumer.registerMessageListener(new MessageListenerOrderly() {
