@@ -18,7 +18,7 @@ public class Consumer {
 
     public static void main(String[] args) throws Exception {
 
-        DefaultMQPushConsumer consumer = new DefaultMQPushConsumer("ConsumerGroup1");
+        DefaultMQPushConsumer consumer = new DefaultMQPushConsumer("ConsumerGroup");
         consumer.setNamesrvAddr(MessageConstants.NAMESRV_ADDR + ":9876");
         consumer.subscribe("TopicTest", "*");
 
