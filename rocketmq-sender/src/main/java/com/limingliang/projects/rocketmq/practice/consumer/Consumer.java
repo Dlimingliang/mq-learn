@@ -23,7 +23,7 @@ public class Consumer {
         consumer.subscribe("TopicTest", "*");
 
         consumer.registerMessageListener((MessageListenerConcurrently) (msgs, context) -> {
-            System.out.printf("%s Receive New Messages: %s %n", Thread.currentThread().getName(), msgs);
+           log.info(String.format("%s Receive New Messages: %s", Thread.currentThread().getName(), msgs));
             // 标记该消息已经被成功消费
             return ConsumeConcurrentlyStatus.CONSUME_SUCCESS;
         });
