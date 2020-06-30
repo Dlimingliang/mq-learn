@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.limingliang.projects.rocketmq.mapper.PayOrderMapper">
+
+    <sql id="base_sql">
+        order_code, goods_id, goods_name, orgin_price, sale_price, user_id, user_name, create_time
+    </sql>
+
+    <sql id="insert_sql">
+        <if test="orderCode != null">
+            order_code = #{orderCode},
+        </if>
+        <include refid="update_sql"></include>
+    </sql>
+
+    <sql id="update_sql">
+        <if test="goodsId != null">
+            goods_id = #{goodsId},
+        </if>
+        <if test="goodsName != null">
+            goods_name = #{goodsName},
+        </if>
+        <if test="orginPrice != null">
+            orgin_price = #{orginPrice},
+        </if>
+        <if test="salePrice != null">
+            sale_price = #{salePrice},
+        </if>
+        <if test="status != null">
+            status = #{status},
+        </if>
+        <if test="userId != null">
+            user_id = #{userId},
+        </if>
+        <if test="userName != null">
+            user_name = #{userName},
+        </if>
+        <if test="createTime != null ">
+            create_time = #{createTime},
+        </if>
+    </sql>
+
+    <select id="get" resultType="com.limingliang.projects.rocketmq.domain.PayOrder">
+        select <include refid="base_sql"></include>
+        from pay_order
+        <where>
+            <if test="orderCode != null and orderCode != ''">
+                AND order_code = #{orderCode}
+            </if>
+        </where>
+    </select>
+
+    <insert id="create" parameterType="com.limingliang.projects.rocketmq.domain.PayOrder">
+        INSERT INTO pay_order
+        <set>
+            <include refid="insert_sql"></include>
+        </set>
+    </insert>
+
+    <insert id="update" parameterType="com.limingliang.projects.rocketmq.domain.PayOrder">
+        UPDATE pay_order
+        <set>
+            <include refid="update_sql"></include>
+        </set>
+        <where>
+            order_code = #{orderCode}
+        </where>
+    </insert>
+
+</mapper>
