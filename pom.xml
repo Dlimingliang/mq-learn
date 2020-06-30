@@ -11,6 +11,7 @@
         <module>rabbitmq-core</module>
         <module>rocketmq-sender</module>
         <module>rocketmq-core</module>
+        <module>rocketmq-receiver</module>
     </modules>
 
     <parent>

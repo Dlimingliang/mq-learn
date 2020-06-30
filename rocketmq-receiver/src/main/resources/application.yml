@@ -1,0 +1,26 @@
+server:
+  port: 9091
+
+spring:
+  application:
+    name: rocketmq-receiver
+  profiles:
+    active:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/mq_learn?useUnicode=true&characterEncoding=UTF-8
+    username: root
+    password:
+
+logging:
+  level:
+    com.limingliang.projects.rocketmq: debug
+
+mybatis:
+  type-aliases-package: com.limingliang.projects.rocketmq.domain
+  mapper-locations: classpath:mapping/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
+
+rocketmq:
+  name-server: 127.0.0.1:9876
