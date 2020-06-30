@@ -36,6 +36,8 @@ public class PayOrderReceiver implements RocketMQListener<PayOrder>, RocketMQPus
         updateOrder.setOrderCode(payOrder.getOrderCode());
         updateOrder.setStatus(OrderStatusEnum.PayAlready.getCode());
         payOrderService.update(updateOrder);
+
+        //int a = 1/0;
     }
 
     @Override
