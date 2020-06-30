@@ -26,7 +26,7 @@ public class DelayConsumer {
         consumer.registerMessageListener((MessageListenerConcurrently) (msgs, context) -> {
 
             for (MessageExt message : msgs) {
-                log.info("Receive message[msgId=" + message.getMsgId() + "] " + (System.currentTimeMillis() - message.getStoreTimestamp()) + "ms later");
+                log.info("Receive message[msgId=" + message.getMsgId() + "] " + (System.currentTimeMillis() - message.getBornTimestamp()) + "ms later");
             }
             // 标记该消息已经被成功消费
             return ConsumeConcurrentlyStatus.CONSUME_SUCCESS;
