@@ -1,5 +1,6 @@
 package com.limingliang.projects.rocketmq.configuration;
 
+import com.limingliang.projects.rocketmq.receiver.DiscountCardReceiver;
 import com.limingliang.projects.rocketmq.receiver.PayOrderReceiver;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -19,4 +20,8 @@ public class MqConsumerConfiguration {
         return new PayOrderReceiver();
     }
 
+    @Bean
+    public DiscountCardReceiver discountCardReceiver() {
+        return new DiscountCardReceiver();
+    }
 }
