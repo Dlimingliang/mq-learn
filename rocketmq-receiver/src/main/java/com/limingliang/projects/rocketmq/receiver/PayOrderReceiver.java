@@ -20,5 +20,10 @@ public class PayOrderReceiver implements RocketMQListener<PayOrder> {
     public void onMessage(PayOrder payOrder) {
 
         log.info("接收到消息: {}" + payOrder);
+
+//        PayOrder payOrder = new PayOrder();
+//        payOrder.setOrderCode(orderCode);
+//        payOrder.setStatus(OrderStatusEnum.PayAlready.getCode());
+//        payOrderService.update(payOrder);
     }
 }
