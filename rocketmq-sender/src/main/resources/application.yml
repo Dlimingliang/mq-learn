@@ -11,10 +11,6 @@ spring:
     url: jdbc:mysql://localhost:3306/mq_learn?useUnicode=true&characterEncoding=UTF-8
     username: root
     password:
-  rocketmq:
-    nameServer: 127.0.0.1:9876
-    producer:
-      group: payOrderGroup
 
 logging:
   level:
@@ -27,3 +23,7 @@ mybatis:
     map-underscore-to-camel-case: true
 
 
+rocketmq:
+  name-server: 127.0.0.1:9876
+  producer:
+    group: payOrderGroup
