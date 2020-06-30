@@ -27,6 +27,21 @@ public class SendMessageService {
     public void sendMessage(PayOrder payOrder) {
 
         payOrderService.create(payOrder);
-        rocketMQTemplate.convertAndSend(TopicConstants.OrderTopic, payOrder);
+        rocketMQTemplate.convertAndSend(TopicConstants.OrderTopic + ":create", payOrder);
+
+        //异步发送
+//        rocketMQTemplate.asyncSend(TopicConstants.OrderTopic, payOrder, new SendCallback() {
+//            @Override
+//            public void onSuccess(SendResult sendResult) {
+//
+//            }
+//
+//            @Override
+//            public void onException(Throwable throwable) {
+//
+//            }
+//        });
+
+        //rocketMQTemplate.syncSendOrderly(TopicConstants.OrderTopic, payOrder, payOrder.getOrderCode());
     }
 }
