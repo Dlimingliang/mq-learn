@@ -6,6 +6,7 @@ import com.limingliang.projects.rocketmq.service.PayOrderService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.rocketmq.client.consumer.DefaultMQPushConsumer;
 import org.apache.rocketmq.common.consumer.ConsumeFromWhere;
+import org.apache.rocketmq.common.message.MessageExt;
 import org.apache.rocketmq.spring.annotation.RocketMQMessageListener;
 import org.apache.rocketmq.spring.core.RocketMQListener;
 import org.apache.rocketmq.spring.core.RocketMQPushConsumerLifecycleListener;
@@ -21,21 +22,21 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Slf4j
 @RocketMQMessageListener(topic = "order_topic", selectorExpression = "create", consumerGroup = "orderConsumerGroup")
-public class PayOrderReceiver implements RocketMQListener<PayOrder>, RocketMQPushConsumerLifecycleListener {
+public class PayOrderReceiver implements RocketMQListener<MessageExt>, RocketMQPushConsumerLifecycleListener {
 
     @Autowired
     private PayOrderService payOrderService;
 
     @Override
     @Transactional
-    public void onMessage(PayOrder payOrder) {
+    public void onMessage(MessageExt messageExt) {
 
-        log.info("orderConsumerGroup接收到消息: {}", payOrder);
+        log.info("orderConsumerGroup接收到消息: {}", messageExt);
 
-        PayOrder updateOrder = new PayOrder();
-        updateOrder.setOrderCode(payOrder.getOrderCode());
-        updateOrder.setStatus(OrderStatusEnum.PayAlready.getCode());
-        payOrderService.update(updateOrder);
+//        PayOrder updateOrder = new PayOrder();
+//        updateOrder.setOrderCode(payOrder.getOrderCode());
+//        updateOrder.setStatus(OrderStatusEnum.PayAlready.getCode());
+//        payOrderService.update(updateOrder);
 
         //int a = 1/0;
     }
