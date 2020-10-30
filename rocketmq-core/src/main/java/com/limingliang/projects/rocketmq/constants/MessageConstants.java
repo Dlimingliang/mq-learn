@@ -8,5 +8,5 @@ package com.limingliang.projects.rocketmq.constants;
  */
 public class MessageConstants {
 
-    public static final String NAMESRV_ADDR = "localhost";
+    public static final String NAMESRV_ADDR = "192.168.1.211";
 }
